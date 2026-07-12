@@ -3,62 +3,97 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Painel Gamer Pro</title>
+<title>Otimização</title>
 
 <style>
 body{
-    margin:0;
     background:#0a0a0a;
-    color:#fff;
+    color:white;
     font-family:Arial,sans-serif;
+    margin:0;
+    padding:20px;
 }
 
 .container{
     max-width:500px;
-    margin:20px auto;
-    padding:15px;
+    margin:auto;
 }
 
 h1{
     text-align:center;
     color:#00ff66;
+    margin-bottom:25px;
 }
 
 .card{
-    background:#1a1a1a;
+    background:#151515;
     border-radius:15px;
     padding:20px;
     margin-bottom:15px;
-    box-shadow:0 0 15px rgba(0,255,102,.25);
+    box-shadow:0 0 10px rgba(0,255,102,.2);
 }
 
 .titulo{
-    color:#aaa;
-    margin-bottom:8px;
-    font-size:14px;
-}
-
-.valor{
-    font-size:28px;
+    font-size:20px;
     font-weight:bold;
-    color:#00ff66;
+    margin-bottom:10px;
 }
 
-select{
-    width:100%;
-    padding:12px;
-    border:none;
-    border-radius:10px;
-    background:#222;
-    color:white;
-    font-size:16px;
+.descricao{
+    color:#aaa;
+    margin-bottom:15px;
 }
 
-button{
+.switch{
+    position:relative;
+    display:inline-block;
+    width:60px;
+    height:34px;
+}
+
+.switch input{
+    opacity:0;
+    width:0;
+    height:0;
+}
+
+.slider{
+    position:absolute;
+    cursor:pointer;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background:#444;
+    transition:.4s;
+    border-radius:34px;
+}
+
+.slider:before{
+    position:absolute;
+    content:"";
+    height:26px;
+    width:26px;
+    left:4px;
+    bottom:4px;
+    background:white;
+    transition:.4s;
+    border-radius:50%;
+}
+
+input:checked + .slider{
+    background:#00ff66;
+}
+
+input:checked + .slider:before{
+    transform:translateX(26px);
+}
+
+.botao{
     width:100%;
     padding:15px;
     border:none;
-    border-radius:10px;
+    border-radius:12px;
     background:#00ff66;
     color:black;
     font-size:18px;
@@ -71,93 +106,49 @@ button{
 
 <div class="container">
 
-<h1>⚡ PAINEL GAMER PRO</h1>
+<h1>⚡ OTIMIZAÇÃO</h1>
 
 <div class="card">
-    <div class="titulo">Configuração de FPS</div>
-    <select id="fps" onchange="atualizar()">
-        <option value="60">60 FPS</option>
-        <option value="120" selected>120 FPS</option>
-    </select>
-</div>
-
-<div class="card">
-    <div class="titulo">Configuração de RAM</div>
-    <select id="ram" onchange="atualizar()">
-        <option value="3">3 GB RAM</option>
-        <option value="6" selected>6 GB RAM</option>
-    </select>
+<div class="titulo">Calibrar Sensi</div>
+<div class="descricao">Melhora a precisão da sensibilidade.</div>
+<label class="switch">
+<input type="checkbox">
+<span class="slider"></span>
+</label>
 </div>
 
 <div class="card">
-    <div class="titulo">FPS Atual</div>
-    <div class="valor" id="fpsValor">120 FPS</div>
+<div class="titulo">Mira Estável</div>
+<div class="descricao">Reduz tremores da mira.</div>
+<label class="switch">
+<input type="checkbox">
+<span class="slider"></span>
+</label>
 </div>
 
 <div class="card">
-    <div class="titulo">RAM Atual</div>
-    <div class="valor" id="ramValor">6 GB</div>
+<div class="titulo">120 FPS</div>
+<div class="descricao">Ativar modo de alta fluidez.</div>
+<label class="switch">
+<input type="checkbox">
+<span class="slider"></span>
+</label>
 </div>
 
 <div class="card">
-    <div class="titulo">CPU</div>
-    <div class="valor">28%</div>
+<div class="titulo">RAM Boost</div>
+<div class="descricao">Libera memória para melhor desempenho.</div>
+<label class="switch">
+<input type="checkbox">
+<span class="slider"></span>
+</label>
 </div>
 
-<div class="card">
-    <div class="titulo">Temperatura</div>
-    <div class="valor">37°C</div>
-</div>
-
-<div class="card">
-    <div class="titulo">Ping</div>
-    <div class="valor">18 ms</div>
-</div>
-
-<div class="card">
-    <div class="titulo">Armazenamento Livre</div>
-    <div class="valor">64 GB</div>
-</div>
-
-<div class="card">
-    <div class="titulo">Modo Gamer</div>
-    <div class="valor">ATIVO</div>
-</div>
-
-<div class="card">
-    <div class="titulo">Status</div>
-    <div class="valor">OTIMIZADO</div>
-</div>
-
-<div class="card">
-    <button onclick="otimizar()">
-        🚀 EXECUTAR BOOST
-    </button>
-</div>
+<button class="botao" onclick="alert('Configurações aplicadas!')">
+🚀 EXECUTAR BOOST
+</button>
 
 </div>
-
-<script>
-function atualizar(){
-    let fps = document.getElementById("fps").value;
-    let ram = document.getElementById("ram").value;
-
-    document.getElementById("fpsValor").innerHTML = fps + " FPS";
-    document.getElementById("ramValor").innerHTML = ram + " GB";
-}
-
-function otimizar(){
-    atualizar();
-
-    alert(
-        "✓ Configuração aplicada\n" +
-        "✓ FPS: " + document.getElementById("fps").value + "\n" +
-        "✓ RAM: " + document.getElementById("ram").value + " GB\n" +
-        "✓ Modo Gamer ativado\n" +
-        "✓ Sistema pronto"
-    );
-}
-</script>
 
 </body>
 </html>

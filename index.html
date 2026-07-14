@@ -3,88 +3,157 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Login</title>
+<title>Otimização</title>
 
 <style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
 body{
-margin:0;
-background:#000;
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
-font-family:Arial;
-color:white;
+    background:#000;
+    color:#fff;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
-#login{
-background:#111;
-padding:30px;
-border-radius:20px;
-width:300px;
-text-align:center;
-}
-
-input{
-width:100%;
-padding:12px;
-margin:10px 0;
-border:none;
-border-radius:10px;
-background:#222;
-color:white;
-}
-
-button{
-width:100%;
-padding:12px;
-border:none;
-border-radius:10px;
-background:#00ff88;
-font-weight:bold;
+#login, #painel{
+    background:#111;
+    width:350px;
+    padding:25px;
+    border-radius:20px;
+    text-align:center;
 }
 
 #painel{
-display:none;
-text-align:center;
+    display:none;
 }
 
 h1{
-color:#00ff88;
+    color:#00ff88;
+    margin-bottom:20px;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    margin:8px 0;
+    border:none;
+    border-radius:10px;
+    background:#222;
+    color:white;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    margin-top:10px;
+    border:none;
+    border-radius:10px;
+    background:#00ff88;
+    color:#000;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.opcao{
+    background:#1a1a1a;
+    padding:12px;
+    border-radius:12px;
+    margin:10px 0;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.switch{
+    width:50px;
+    height:25px;
 }
 </style>
 </head>
-
 <body>
 
 <div id="login">
-<h1>LOGIN</h1>
+    <h1>LOGIN</h1>
 
-<input id="usuario" placeholder="Usuário">
-
-<input id="senha" type="password" placeholder="Senha">
-
-<button onclick="entrar()">ENTRAR</button>
+    <form id="loginForm">
+        <input type="text" id="usuario" placeholder="Usuário">
+        <input type="password" id="senha" placeholder="Senha">
+        <button type="submit">ENTRAR</button>
+    </form>
 </div>
 
 <div id="painel">
-<h1>ACESSO LIBERADO</h1>
-<p>Login funcionando.</p>
+    <h1>OTIMIZAÇÃO</h1>
+
+    <div class="opcao">
+        <span>Calibrar Sensi</span>
+        <input type="checkbox" class="switch">
+    </div>
+
+    <div class="opcao">
+        <span>Mira Estável</span>
+        <input type="checkbox" class="switch">
+    </div>
+
+    <div class="opcao">
+        <span>120 FPS</span>
+        <input type="checkbox" class="switch">
+    </div>
+
+    <div class="opcao">
+        <span>RAM Boost</span>
+        <input type="checkbox" class="switch">
+    </div>
+
+    <div class="opcao">
+        <span>Reduzir Lag</span>
+        <input type="checkbox" class="switch">
+    </div>
+
+    <div class="opcao">
+        <span>Otimizar Toque</span>
+        <input type="checkbox" class="switch">
+    </div>
+
+    <div class="opcao">
+        <span>Melhorar Mira</span>
+        <input type="checkbox" class="switch">
+    </div>
+
+    <div class="opcao">
+        <span>Limpar Cache</span>
+        <input type="checkbox" class="switch">
+    </div>
+
+    <button onclick="aplicar()">APLICAR CONFIGURAÇÕES</button>
 </div>
 
 <script>
-function entrar(){
+document.getElementById("loginForm").addEventListener("submit", function(e){
 
-let usuario=document.getElementById("usuario").value;
-let senha=document.getElementById("senha").value;
+    e.preventDefault();
 
-if(usuario==="1" && senha==="1"){
-document.getElementById("login").style.display="none";
-document.getElementById("painel").style.display="block";
-}else{
-alert("Usuário ou senha incorretos");
-}
+    let usuario = document.getElementById("usuario").value.trim();
+    let senha = document.getElementById("senha").value.trim();
 
+    if(usuario === "1" && senha === "1"){
+        document.getElementById("login").style.display = "none";
+        document.getElementById("painel").style.display = "block";
+    }else{
+        alert("Usuário ou senha incorretos");
+    }
+
+});
+
+function aplicar(){
+    alert("Configurações aplicadas com sucesso!");
 }
 </script>
 
